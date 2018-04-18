@@ -1,0 +1,8 @@
+{
+  "_id": "condition_fail_rate",
+  "found": true,
+  "script": {
+    "lang": "painless",
+    "code": "return (ctx.payload.aggregations.s_f.buckets.fail.unique_uid.value > params.threshold1) &&(((float)ctx.payload.aggregations.s_f.buckets.fail.unique_uid.value/(ctx.payload.aggregations.s_f.buckets.fail.unique_uid.value+ctx.payload.aggregations.s_f.buckets.success.unique_uid.value)) > params.threshold2)"
+  }
+}

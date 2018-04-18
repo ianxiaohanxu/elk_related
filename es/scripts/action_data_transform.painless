@@ -1,0 +1,8 @@
+{
+  "_id": "action_data_transform",
+  "found": true,
+  "script": {
+    "lang": "painless",
+    "code": "return ['success': ctx.payload.aggregations.s_f.buckets.success.doc_count, 'fail': ctx.payload.aggregations.s_f.buckets.fail.doc_count, 'all': ctx.payload.aggregations.s_f.buckets.success.doc_count+ctx.payload.aggregations.s_f.buckets.fail.doc_count, 'fail_rate': ((float)ctx.payload.aggregations.s_f.buckets.fail.doc_count/(ctx.payload.aggregations.s_f.buckets.success.doc_count+ctx.payload.aggregations.s_f.buckets.fail.doc_count)*100)];"
+  }
+}

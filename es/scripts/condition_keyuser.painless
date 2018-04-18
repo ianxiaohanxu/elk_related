@@ -1,0 +1,8 @@
+{
+  "_id": "condition_keyuser",
+  "found": true,
+  "script": {
+    "lang": "painless",
+    "code": "List count_by_user = new ArrayList(); if (ctx.payload.aggregations.count_by_user.buckets.getLength() == 0) {return false;} for (int i=0; i <  ctx.payload.aggregations.count_by_user.buckets.getLength(); i++){ count_by_user.add(0, ctx.payload.aggregations.count_by_user.buckets[i]['doc_count'])} count_by_user.sort((x, y) -> y - x); return count_by_user[0] > params.threshold1;"
+  }
+}
